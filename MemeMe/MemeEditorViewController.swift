@@ -150,8 +150,8 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
             
             //create an activity view controller with completion handler
             let vc = UIActivityViewController(activityItems: [i], applicationActivities: nil)
-            vc.completionHandler = {
-                (activityType, completed: Bool) in
+            vc.completionWithItemsHandler = {
+                (activityType, completed, returnedItems, activityError) in
                 if completed {
                     
                     //save the meme into the model first
@@ -227,13 +227,13 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         var meme = Meme(top: topTextField.text, bottom: bottomTextField.text, image: imageView.image, memedImage: generateMemedImage())
         
         //add it to the memes array
-        (UIApplication.sharedApplication().delegate as AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         //get user selected image and set it to imageView
-        var pickedImage = info[UIImagePickerControllerOriginalImage] as UIImage
+        var pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = pickedImage
         
         //enable the share button since an image has been selected
@@ -297,7 +297,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.CGRectValue().height
     }
     

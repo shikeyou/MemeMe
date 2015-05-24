@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 KSL. All rights reserved.
 //
 
-import UIKIt
+import UIKit
 
 class MemeDetailViewController: UIViewController {
     
@@ -55,7 +55,7 @@ class MemeDetailViewController: UIViewController {
     func removeMeme() {
         //remove meme from array
         if let index = memeIndex {
-            (UIApplication.sharedApplication().delegate as AppDelegate).memes.removeAtIndex(index)
+            (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(index)
         }
     }
 }

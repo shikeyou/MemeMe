@@ -18,16 +18,16 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (UIApplication.sharedApplication().delegate as AppDelegate).memes.count
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //dequeue a reusable cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableViewCell", forIndexPath: indexPath) as MemeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableViewCell", forIndexPath: indexPath) as! MemeTableViewCell
         
         //get the meme
-        let meme = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row]
+        let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         
         //set appropriate data in the cell
         cell.textLabel!.text = meme.top + " "  + meme.bottom
@@ -40,10 +40,10 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         //instantiate a MemeDetailViewController
-        let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         
         //pass meme data to the instance
-        vc.meme = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row]
+        vc.meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         vc.memeIndex = indexPath.row
         
         //push view controller onto navigation stack

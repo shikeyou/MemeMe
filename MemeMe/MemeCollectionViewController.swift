@@ -18,16 +18,16 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (UIApplication.sharedApplication().delegate as AppDelegate).memes.count
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         //dequeue a reusable cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCollectionCell", forIndexPath: indexPath) as MemeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
         //get the meme
-        let meme = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row]
+        let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         
         //set appropriate data in the cell
         cell.imageView.image = meme.memedImage
@@ -39,10 +39,10 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         //instantiate a MemeDetailViewController
-        let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         
         //pass meme data to the instance
-        vc.meme = (UIApplication.sharedApplication().delegate as AppDelegate).memes[indexPath.row]
+        vc.meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
         vc.memeIndex = indexPath.row
         
         //push view controller onto navigation stack
