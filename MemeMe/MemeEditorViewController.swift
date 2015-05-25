@@ -309,9 +309,9 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        //shift whole view down only if bottom text field has been being edited
+        //shift whole view back to origin only if bottom text field has been being edited
         if bottomTextField.isFirstResponder() {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     

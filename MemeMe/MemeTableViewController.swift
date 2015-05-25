@@ -10,6 +10,16 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //show the meme editor if no memes are available yet
+        if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.isEmpty {
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+            presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

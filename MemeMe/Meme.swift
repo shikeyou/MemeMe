@@ -13,4 +13,11 @@ struct Meme {
     var bottom: String = ""
     var image: UIImage?
     var memedImage: UIImage?
+    
+    init(top: String, bottom: String, image: UIImage?, memedImage: UIImage?) {
+        self.top = top
+        self.bottom = bottom
+        self.image = image
+        self.memedImage = memedImage
+    }
 }

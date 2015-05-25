@@ -30,7 +30,7 @@ class MemeDetailViewController: UIViewController {
                 action in
                 
                 //remove meme
-                self.removeMeme()
+                self.removeThisMeme()
                 
                 //pop this detail view controller
                 self.navigationController!.popViewControllerAnimated(true)
@@ -52,7 +52,7 @@ class MemeDetailViewController: UIViewController {
         presentViewController(vc, animated: true, completion: nil)
     }
     
-    func removeMeme() {
+    func removeThisMeme() {
         //remove meme from array
         if let index = memeIndex {
             (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(index)
